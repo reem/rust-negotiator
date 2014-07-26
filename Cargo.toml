@@ -1,0 +1,11 @@
+[package]
+
+name = "negotiator"
+version = "0.0.0"
+authors = ["Jonathan Reem <jonathan.reem@gmail.com>"]
+
+[[lib]]
+
+name = "negotiator"
+path = "src/lib.rs"
+
