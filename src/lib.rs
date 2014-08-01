@@ -1,18 +1,16 @@
 #![license = "MIT"]
 //#![deny(missing_doc)]
-#![deny(unnecessary_qualification, non_camel_case_types,
-        unnecessary_typecast)]
+#![deny(warnings)]
 #![feature(phase, globs)]
 
 //! Framework-agnostic HTTP Content Negotiation.
 //!
 //! Heavily influenced by https://github.com/federomero/negotiator
 
-extern crate regex;
-#[phase(plugin, link)] extern crate regex_macros;
+extern crate parser = "http-parse-priority-header";
 
 use self::charset::matching_charsets;
-//use self::encoding::matching_encodings;
+use self::encoding::matching_encodings;
 //use self::language::matching_languages;
 //use self::media_type::matching_media_types;
 
@@ -40,7 +38,7 @@ pub trait Negotiable {
     }
 
     fn encodings<S: Str>(&self, provided: Vec<S>) -> Vec<S> {
-        vec![]
+        matching_encodings(self.get_encoding(), provided)
     }
 
     fn language<S: Str>(&self, provided: Vec<S>) -> Option<S> {
