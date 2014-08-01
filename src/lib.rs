@@ -18,6 +18,7 @@ mod charset;
 mod encoding;
 mod language;
 mod media_type;
+mod common;
 
 pub trait Negotiable {
     fn get_charset(&self) -> Option<String> { None }
