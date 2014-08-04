@@ -12,7 +12,7 @@ extern crate parser = "http-parse-priority-header";
 use self::charset::matching_charsets;
 use self::encoding::matching_encodings;
 //use self::language::matching_languages;
-//use self::media_type::matching_media_types;
+use self::media_type::matching_media_types;
 
 mod charset;
 mod encoding;
@@ -55,7 +55,7 @@ pub trait Negotiable {
     }
 
     fn media_types<S: Str>(&self, provided: Vec<S>) -> Vec<S> {
-        vec![]
+        matching_media_types(self.get_media_type(), provided)
     }
 
 }
