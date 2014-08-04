@@ -5,6 +5,8 @@
 
 //! Framework-agnostic HTTP Content Negotiation.
 //!
+//! Compiles, but not feature complete.
+//!
 //! Heavily influenced by https://github.com/federomero/negotiator
 
 extern crate parser = "http-parse-priority-header";
